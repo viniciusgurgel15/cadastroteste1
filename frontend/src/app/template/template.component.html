@@ -1,0 +1,39 @@
+<div class="wrapper d-flex w-100 ">
+
+	<nav id="sidebar" [class.collapsed]="!openSidebar">
+		<div class="sidebar-header shadow-sm p-2 mb-3">
+      <h1>Atech</h1>
+		</div>
+
+    <div class="sidebar-menu">
+      <ul class="list-group pl-3">
+
+        <li class="d-flex mb-2">
+          <a class="d-flex justify-content-left align-items-stretch" routerLink="/" routerLinkActive="active">
+            <span class="material-icons mr-2">home</span> Home
+          </a>
+        </li>
+        <small class="text-uppercase pt-3 pb-2"><b>Cadastros</b></small>
+        <li class="d-flex">
+          <a class="d-flex justify-content-left align-items-stretch" routerLink="/pessoas" routerLinkActive="active">
+            <span class="material-icons mr-2">group</span> Pessoas
+          </a>
+        </li>
+      </ul>
+    </div>
+	</nav>
+
+	<div id="content" [class.collapsed]="!openSidebar" [class.mobile]="isMobile">
+		<nav class="navbar navbar-light shadow p-3 bg-white">
+			<span role="button" class="material-icons pointer" (click)="toogle">menu</span>
+			<span role="button" class="material-icons ml-auto">perm_identity</span>
+		</nav>
+
+		<div class="container-fluid">
+      <router-outlet></router-outlet>
+		</div>
+	</div>
+
+</div>
+
+<div [class.overlay]="isMobile && openSidebar" (click)="toogle"></div>

@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Deseja excluir este item?</h2>
+<mat-dialog-content class="mat-typography">
+  <p>Certifique-se de que é a pessoa certa, essa ação não poderá ser desfeita.</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">Deletar</button>
+</mat-dialog-actions>
