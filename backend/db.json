@@ -1,0 +1,28 @@
+{
+  "pessoas": [
+    {
+      "id": 1,
+      "nome": "Diego Pombo de Freitas",
+      "dtnascimento": "2020-09-01",
+      "estadocivil": "1",
+      "nomeparceiro": "Rafaele S. Fonseca",
+      "dtnascimentoparceiro": "2020-09-01"
+    },
+    {
+      "nome": "João da Silva Ribeiro",
+      "dtnascimento": "2001-12-02",
+      "estadocivil": "1",
+      "nomeparceiro": "Maria Aparecida",
+      "dtnascimentoparceiro": "2000-02-21",
+      "id": 3
+    },
+    {
+      "nome": "Helena Salgado ",
+      "dtnascimento": "2000-06-16",
+      "estadocivil": "2",
+      "nomeparceiro": "",
+      "dtnascimentoparceiro": "",
+      "id": 4
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+<mat-card>
+  <h1 class="pb-4">{{ pageTitle }}</h1>
+  <form [formGroup]="formPessoa" *ngIf="formPessoa" (ngSubmit)="onSave()">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" name="nome" formControlName="nome">
+        <div *ngIf="submitted && f.nome.errors" class="invalid-feedback d-block">
+					<div *ngIf="f.nome.errors.required">Nome é obrigatório.</div>
+					<div *ngIf="f.nome.errors.minlength">Nome deve conter no mínimo 5 caracteres.</div>
+				</div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="dtnascimento">Data de nascimento</label>
+        <input type="date" class="form-control" id="dtnascimento" name="dtnascimento" max="2001-12-31" formControlName="dtnascimento">
+        <div *ngIf="submitted && f.dtnascimento.errors" class="invalid-feedback d-block">
+					<div *ngIf="f.dtnascimento.errors.required">Data de nascimento é obrigatório.</div>
+				</div>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="estadocivil">Estado civil</label>
+        <select class="custom-select" id="estadocivil" name="estadocivil" formControlName="estadocivil" (change)="possuiParceiro($event.target.value)">
+          <option value="1">Casado</option>
+          <option value="2">Solteiro</option>
+        </select>
+        <div *ngIf="submitted && f.estadocivil.errors" class="invalid-feedback d-block">
+					<div *ngIf="f.estadocivil.errors.required">Estado civil é obrigatório.</div>
+				</div>
+      </div>
+    </div>
+    <div *ngIf="enableParceiro" class="form-row">
+      <div class="form-group col-md-8">
+        <label for="nomeparceiro">Nome do parceiro</label>
+        <input type="text" class="form-control" id="nomeparceiro" name="nomeparceiro" formControlName="nomeparceiro">
+        <div *ngIf="submitted && f.nomeparceiro.errors" class="invalid-feedback d-block">
+					<div *ngIf="f.nomeparceiro.errors.required">Nome do parceiro é obrigatório.</div>
+					<div *ngIf="f.nomeparceiro.errors.minlength">Nome do parceiro deve conter no mínimo 5 caracteres.</div>
+				</div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="dtnascimentoparceiro">Data nasc. do parceiro</label>
+        <input type="date" class="form-control" id="dtnascimentoparceiro" name="dtnascimentoparceiro" max="2001-12-31" formControlName="dtnascimentoparceiro">
+        <div *ngIf="submitted && f.dtnascimentoparceiro.errors" class="invalid-feedback d-block">
+					<div *ngIf="f.dtnascimentoparceiro.errors.required">Data de nascimento do parceiro é obrigatório.</div>
+				</div>
+      </div>
+    </div>
+
+    <div class="pt-4">
+      <button mat-raised-button class="mr-2" (click)="cancel()">Voltar</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="disableBtnSave">Salvar</button>
+    </div>
+
+  </form>
+</mat-card>

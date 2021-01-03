@@ -1,0 +1,48 @@
+<mat-card class="shadow">
+  <h1 class="pb-4">Cadastro de pessoas</h1>
+
+    <div class="d-flex flex-row-reverse mb-2">
+      <div class="col-4">
+        <input [(ngModel)]="searchText" class="form-control" placeholder="Pesquisar">
+      </div>
+    </div>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Data de nascimento</th>
+          <th scope="col">Estado civil</th>
+          <th scope="col">Nome do parceiro</th>
+          <th scope="col">Data nasc. do parceiro</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!data">
+          <td class="text-muted" colspan="100%">Nenhuma pessoa cadastrada.</td>
+        </tr>
+        <tr *ngFor="let item of data | tableFilter: {nome: searchText}">
+          <td>{{ item.nome }}</td>
+          <td>{{ item.dtnascimento | customDate }}</td>
+          <td>{{ item.estadocivil === '1' ? 'Casado' : 'Solteiro' }}</td>
+          <td>{{ item.nomeparceiro | null }}</td>
+          <td>{{ item.dtnascimentoparceiro ? (item.dtnascimentoparceiro | customDate) : (item.dtnascimentoparceiro | null) }}</td>
+          <td class="p-0">
+            <button mat-icon-button color="primary" (click)="alterarPessoa(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button color="warn" (click)="deletarPessoa(item)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex flex-row-reverse m-4">
+      <button mat-fab style="background-color: greenyellow;" class="btnAdd" routerLink="novo">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+</mat-card>
